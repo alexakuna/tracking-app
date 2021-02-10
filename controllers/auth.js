@@ -14,7 +14,7 @@ module.exports.login = async function (req, res) {
                 const token = jwt.sign({
                     seller: candidate.seller,
                     userId: candidate._id
-                }, keys.jwt, {expiresIn: 3600})
+                }, keys.jwt, {expiresIn: 3600 * 24})
                 candidate.token = token
                 await candidate.save()
                 res.set('Access-Control-Request-Method', '*')
