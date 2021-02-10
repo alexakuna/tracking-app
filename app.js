@@ -1,20 +1,21 @@
-var express = require('express');
-var mongoose = require('mongoose')
-var passport = require('passport')
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require('cors')
-var conf = require('./conf/config')
+const express = require('express');
+const mongoose = require('mongoose')
+const passport = require('passport')
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors')
+const conf = require('./conf/config')
 
 mongoose.connect(conf.mongoURI, {useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true})
     .then(() => console.log('Connected DB'))
     .catch(error => console.log(error))
 
-var authRouter = require('./routes/auth');
-var mainRouter = require('./routes/main');
+const authRouter = require('./routes/auth');
+const mainRouter = require('./routes/main');
+const traceRouter = require('./routes/tracking');
 
-var app = express();
+const app = express();
 
 app.use(passport.initialize())
 require('./middleware/passport')(passport)
@@ -27,5 +28,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/auth', authRouter);
 app.use('/api/', mainRouter);
+app.use('/api/track', traceRouter);
 
 module.exports = app;
