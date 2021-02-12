@@ -1,8 +1,8 @@
 .DS_Store
 node_modules
-/dist
 .idea
 client
+
 
 # local env files
 .env.local

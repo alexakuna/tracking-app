@@ -30,4 +30,9 @@ app.use('/api/auth', authRouter);
 app.use('/api/', mainRouter);
 app.use('/api/track', traceRouter);
 
+app.use(express.static(__dirname + "/dist/"))
+app.get(/.*/, function (req, res) {
+    res.sendFile(__dirname + "/dist/index.html")
+})
+
 module.exports = app;
