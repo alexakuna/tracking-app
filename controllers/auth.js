@@ -6,7 +6,7 @@ const keys = require('../conf/config');
 module.exports.login = async function (req, res) {
     const candidate = await User.findOne({seller: req.body.seller})
     if(candidate) {
-        if(candidate.token !== '' && req.body.token === '') { //Обязательно переписать на сравнение токенов!!!
+        if(false) { //Обязательно переписать на сравнение токенов!!! / candidate.token !== '' && req.body.token === ''
             res.status(409).json({message: 'Аккаунт уже используется.'})
         } else {
             const passwordResult = bcrypt.compareSync(req.body.password, candidate.password)
@@ -28,7 +28,6 @@ module.exports.login = async function (req, res) {
     }
 }
 module.exports.logout = async function (req, res) {
-    console.log(req.body)
     const candidate = await User.findOne({_id: req.body.id})
     if(candidate) {
         candidate.token = ''
