@@ -10,7 +10,10 @@ router.post('/trace', async function(req, res) {
             const xml = convert.xml2js(response.data, {compact: true, spaces: 4})
             res.status(200).json(xml)
         })
-        .catch(error => console.log(error))
+        .catch(error => {
+            console.log(error)
+            res.status(500).json(error)
+        })
 });
 
 module.exports = router;

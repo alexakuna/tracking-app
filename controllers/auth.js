@@ -18,7 +18,12 @@ module.exports.login = async function (req, res) {
                 candidate.token = token
                 await candidate.save()
                 res.set('Access-Control-Request-Method', '*')
-                res.status(200).json({token: `Bearer ${token}`, shops: candidate.shops, id: candidate._id})
+                res.status(200).json({
+                    token: `Bearer ${token}`,
+                    shops: candidate.shops,
+                    id: candidate._id,
+                    key: candidate.api
+                })
             } else {
                 res.status(401).json({message: 'Не верный пароль. Попробуйте еще раз.'})
             }
