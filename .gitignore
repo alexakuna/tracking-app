@@ -3,7 +3,6 @@ node_modules
 .idea
 client
 
-
 # local env files
 .env.local
 .env.*.local
