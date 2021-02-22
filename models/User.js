@@ -10,7 +10,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    shops: [String],
+    shops: Array,
     token: {
         type: String,
         default: ''
