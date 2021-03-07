@@ -18,7 +18,7 @@ const userSchema = new Schema({
     id: String,
     api: String
     },
-    {collection : 'users'}
+    {collection : 'users-test'}
 )
 
 module.exports = mongoose.model('Users', userSchema);
