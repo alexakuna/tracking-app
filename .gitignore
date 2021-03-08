@@ -2,6 +2,7 @@
 node_modules
 .idea
 ups.js
+client
 
 # local env files
 .env.local
